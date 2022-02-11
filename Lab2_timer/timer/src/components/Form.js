@@ -6,12 +6,20 @@ const Form = (props) => {
       <form className='timer__form' onSubmit={props.handleSubmit}>
         <div className='timerInput_One'>
           <div className='timerInput__label'>Title</div>
-          <input className='timerInput' type='text' value={props.title} onChange={props.handleTitle}
+          <input
+            className='timerInput'
+            type='text'
+            value={props.title}
+            onChange={props.handleTitle}
           />
         </div>
         <div className='timerInput_One'>
           <div className='timerInput__label'>Project</div>
-          <input className='timerInput' type='text' value={props.project} onChange={props.handleProject}
+          <input
+            className='timerInput'
+            type='text'
+            value={props.project}
+            onChange={props.handleProject}
           />
         </div>
       </form>

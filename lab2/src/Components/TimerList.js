@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import Timer from '../Timer/Timer';
-import { TimerContext } from '../TimerContext';
-import './TimerList.css';
+import Timer from '../Components/Timer';
+import { Context } from '../Context';
+
 
 const TimerList = () => {
-  const [timerList, setTimerList] = useContext(TimerContext);
+  const [timerList, setTimerList] = useContext(Context);
   return (
     <div>
       {timerList.map((timer, index) => (

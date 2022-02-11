@@ -1,16 +1,16 @@
 import './App.css';
 import React, { useState, useContext } from 'react';
-import TimerList from './Components/TimerList';
-import { Context } from './Context';
-import Form from './Form';
+import TimerDashboard from './components/TimerDashboard';
+import { TimerContext } from './TimerContext';
+import Form from './components/Form';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState('');
   const [project, setProject] = useState('');
-  const [timer, setTimerList] = useContext(Context);
+  const [timerList, setTimerList] = useContext(TimerContext);
 
-  
+  let newList = [...timerList];
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -22,7 +22,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    timer.push({
+    newList.push({
       title: title,
       project: project,
       editMode: false,
@@ -33,20 +33,19 @@ function App() {
     });
     setTitle('');
     setProject('');
-    setTimerList(timer);
+    setTimerList(newList);
     setShowForm(false);
   };
 
   return (
     <div className='App'>
       <div className='app__header'>Timers</div>
-      
-      <TimerList />
+      <TimerDashboard />
       {showForm && (
         <Form
           creation={true}
           changeEditMode={() => {
-            setShowForm(false);
+            setShowForm(!showForm);
           }}
           handleSubmit={handleSubmit}
           title={title}
@@ -58,11 +57,10 @@ function App() {
       <div
         className='showForm__button'
         onClick={() => {
-          setShowForm(true);
+          setShowForm(!showForm);
         }}>
         +
       </div>
-      
     </div>
   );
 }

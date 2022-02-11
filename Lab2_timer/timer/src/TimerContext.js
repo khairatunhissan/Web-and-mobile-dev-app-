@@ -1,7 +1,3 @@
-//create
-//provider
-//usage
-
 import { createContext, useState } from 'react';
 
 export const TimerContext = createContext();
